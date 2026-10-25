@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nikhil Anand — Personal Linktree
 
-## Getting Started
+A personal link hub built with Next.js App Router, React, TypeScript, and Tailwind CSS. Its dark canvas, violet accents, serif headings, and subtle grid follow DevKit Market's visual style.
 
-First, run the development server:
+## Development
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run lint
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Component architecture
 
-## Learn More
+- `app/page.tsx` composes the page from reusable server components.
+- `components/site-header.tsx` renders the personal wordmark.
+- `components/profile.tsx` renders the portrait and introduction.
+- `components/featured-links.tsx` renders the Hire Me and DevKit Market buttons in a shared row.
+- `components/social-links.tsx` renders the social navigation.
+- `components/site-footer.tsx` renders the closing note.
+- `components/icon.tsx` provides shared SVG icons.
+- `components/link-logo.tsx` renders the local logo assets from `public` using Next.js Image.
+- `data/profile.ts` holds profile content and typed link definitions.
+- `app/globals.css` holds design tokens, component styles, and responsive rules.
+- `app/layout.tsx` configures self-hosted Geist fonts and social metadata.
 
-To learn more about Next.js, take a look at the following resources:
+The page is statically prerendered. No database or client-side JavaScript components are required. The portrait is served locally through Next.js Image, and external links use normal browser navigation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Personalization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Edit `data/profile.ts` to update the biography and destinations. Replace `public/profile.webp` to change the portrait. Update metadata in `app/layout.tsx` when changing the page identity. Set a canonical URL once the final deployment domain is known.
 
-## Deploy on Vercel
+## Accessibility
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Includes semantic landmarks, visible focus indicators, a skip link, descriptive link text, reduced-motion support, safe-area padding, fluid typography, and responsive layouts checked across 84 viewport configurations. See [RESPONSIVE_TEST_REPORT.md](./RESPONSIVE_TEST_REPORT.md) for the complete matrix and verification limits.
